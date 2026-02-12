@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { ShoppingCart, Minus, Plus, MessageCircle } from "lucide-react";
+import { MessageCircle, Minus, Plus } from "lucide-react";
 import intraJuiceImg from "@/assets/intra-juice.jpg";
-import intraCapsImg from "@/assets/intra-capsules.jpg";
+import nutriaplusImg from "@/assets/nutriaplus.jpg";
+import cardiolifeImg from "@/assets/cardiolife.png";
+import fiberlifeImg from "@/assets/fiberlife.jpg";
 
 interface Product {
   id: string;
@@ -12,6 +14,7 @@ interface Product {
   description: string;
   usage: string;
   stock: number;
+  featured?: boolean;
 }
 
 const initialProducts: Product[] = [
@@ -23,19 +26,42 @@ const initialProducts: Product[] = [
     image: intraJuiceImg,
     description:
       "As a natural food supplement, Intra's precise formula of 23 botanical extracts work better together to help balance and strengthen the body's eight biological systems, leaving you feeling healthier, happier and more energized! Intra is a pleasant tasting, proprietary formulation of 23 time-tested and trusted botanical extracts that provide the body with antioxidants, flavonoids, lignins, polysaccharides and other health enhancing nutrients.",
-    usage: "Any time of the day with food or empty stomach – 1 fl. oz (28 to 56 ml)",
+    usage: "Any time of the day with food or empty stomach – 1 to 2 fl. oz (28 to 56 ml) or 2 to 4 capsules daily",
     stock: 25,
+    featured: true,
   },
   {
-    id: "intra-capsules",
-    name: "Intra Capsules",
-    subtitle: "Convenient Daily Supplement",
-    price: 1200,
-    image: intraCapsImg,
+    id: "nutriaplus",
+    name: "NutriaPlus",
+    subtitle: "60 Capsules – Dietary Supplement",
+    price: 1300,
+    image: nutriaplusImg,
     description:
-      "The key to Intra's effectiveness is the synergy of the blended botanicals working together providing greater benefits than an individual botanical on its own. Intra's unique formula is exclusive to Lifestyles and has remained unchanged since 1992. Now available in convenient capsule form for on-the-go wellness.",
-    usage: "Any time of the day with food or empty stomach – 2 to 4 capsules daily",
-    stock: 30,
+      "NutriaPlus is a powerful antioxidant supplement formulated with fruit and vegetable concentrates, plant extracts, vitamin C and selenium to help your body defend itself against the health challenges of modern life! Developed using the Zebrafish Research Model, NutriaPlus is a combination of 12 synergistic ingredients that showed amazing results in helping human health.",
+    usage: "Any time of the day with food – 2 capsules daily",
+    stock: 20,
+  },
+  {
+    id: "cardiolife",
+    name: "CardioLife",
+    subtitle: "60 Capsules – with Vitamin K2",
+    price: 1400,
+    image: cardiolifeImg,
+    description:
+      "CardioLife is a scientifically formulated dietary supplement providing vitamins, minerals and plant extracts that support cardiovascular health and normal blood flow throughout the body. The combination of Vitamin K2 (MK7), Hawthorn Extract and Vitamins B6, B12 and Folic Acid support the health of the arteries.",
+    usage: "Any time of the day with food – 2 capsules daily",
+    stock: 18,
+  },
+  {
+    id: "fiberlife",
+    name: "FiberLife",
+    subtitle: "60 Capsules – Soluble Fiber Supplement",
+    price: 1200,
+    image: fiberlifeImg,
+    description:
+      "A revolutionary proprietary soluble fiber blend that helps to supplement the body's deficiency of fiber and help maintain a healthy bodyweight. Each capsule contains 500mg of soluble fibre derived from concentrated, natural sources such as Konjac Glucomannan, Guar Gum, Xanthan Gum with added cinnamon extract.",
+    usage: "For blood sugar & cholesterol: 1-2 capsules at the start of each meal. For weight loss: 1-2 capsules between meals 2-3 times daily. Drink 250ml water with each capsule.",
+    stock: 22,
   },
 ];
 
@@ -47,9 +73,14 @@ const ProductCard = ({ product }: { product: Product }) => {
   const whatsappUrl = `https://wa.me/639289258127?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
-    <div className="bg-card rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col">
+    <div className={`bg-card rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col ${product.featured ? "ring-2 ring-gold" : ""}`}>
+      {product.featured && (
+        <div className="gold-gradient text-accent-foreground text-center text-xs font-body font-bold py-1.5 tracking-wider uppercase">
+          ⭐ Best Seller
+        </div>
+      )}
       <div className="relative bg-secondary p-8 flex items-center justify-center">
-        <img src={product.image} alt={product.name} className="h-64 object-contain animate-float" />
+        <img src={product.image} alt={product.name} className="h-64 object-contain" />
         {product.stock <= 5 && (
           <span className="absolute top-4 right-4 bg-destructive text-destructive-foreground text-xs font-body font-bold px-3 py-1 rounded-full">
             Low Stock
@@ -119,13 +150,13 @@ const ProductsSection = () => {
         <div className="text-center mb-12">
           <span className="text-gold font-body text-sm tracking-widest uppercase">Our Products</span>
           <h2 className="font-display text-3xl md:text-4xl text-foreground mt-2 mb-4">
-            Intra – Drink It. Share It. Every Day.
+            Lifestyles Product Line
           </h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto">
-            Available in liquid (950 ml bottle) or capsules. Intra's formula has been enjoyed by millions of satisfied customers worldwide since 1992.
+            With Lifestyles line of products, there's something for everyone! Millions of satisfied customers in over 30 countries worldwide since 1989.
           </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {initialProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
