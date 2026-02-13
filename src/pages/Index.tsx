@@ -6,6 +6,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import SiteFooter from "@/components/SiteFooter";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <AboutSection />
       <ContactSection />
       <SiteFooter />
+      <FloatingWhatsApp />
     </div>
   );
 };
