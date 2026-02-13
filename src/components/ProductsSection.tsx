@@ -31,17 +31,6 @@ const initialProducts: Product[] = [
     featured: true,
   },
   {
-    id: "intra-capsules",
-    name: "Intra Capsules",
-    subtitle: "60 Capsules – Herbal Supplement",
-    price: 1200,
-    image: intraJuiceImg,
-    description:
-      "The same powerful formula of 23 botanical extracts now in convenient capsule form. Intra Capsules deliver the same antioxidants, flavonoids, lignins, polysaccharides and health-enhancing nutrients as the liquid tincture – perfect for on-the-go wellness. Suitable for all ages.",
-    usage: "Any time of the day with food or empty stomach – 2 to 4 capsules daily",
-    stock: 15,
-  },
-  {
     id: "nutriaplus",
     name: "NutriaPlus",
     subtitle: "60 Capsules – Dietary Supplement",
