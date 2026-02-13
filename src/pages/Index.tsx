@@ -7,17 +7,28 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import SiteFooter from "@/components/SiteFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background pt-16">
       <SiteHeader />
       <HeroSection />
-      <BenefitsSection />
-      <ProductsSection />
-      <TestimonialsSection />
-      <AboutSection />
-      <ContactSection />
+      <ScrollReveal>
+        <BenefitsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ProductsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TestimonialsSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <AboutSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ContactSection />
+      </ScrollReveal>
       <SiteFooter />
       <FloatingWhatsApp />
     </div>
