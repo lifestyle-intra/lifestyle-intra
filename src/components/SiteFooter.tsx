@@ -40,9 +40,6 @@ const SiteFooter = () => {
             ⚠️ Disclaimer: These statements have not been evaluated by the Food and Drug Administration. 
             This product is not intended to diagnose, treat, cure or prevent any disease.
           </p>
-          <p className="font-body text-xs text-primary-foreground/40 mb-2">
-            💡 Link this site in your Facebook Marketplace listings for full details and easy ordering.
-          </p>
           <p className="font-body text-xs text-primary-foreground/30">
             © {new Date().getFullYear()} Lifestyles Intra — Independent Distributor
           </p>

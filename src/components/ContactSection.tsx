@@ -63,7 +63,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <p className="font-body font-bold text-foreground group-hover:text-primary transition-colors">Facebook</p>
-                <p className="text-muted-foreground font-body text-sm">Christian Espinosa</p>
+                <p className="text-muted-foreground font-body text-sm">Independent Distributor</p>
               </div>
             </a>
             <div className="bg-card rounded-lg p-5 border-l-4 border-gold">
