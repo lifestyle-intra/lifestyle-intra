@@ -26,9 +26,20 @@ const initialProducts: Product[] = [
     image: intraJuiceImg,
     description:
       "As a natural food supplement, Intra's precise formula of 23 botanical extracts work better together to help balance and strengthen the body's eight biological systems, leaving you feeling healthier, happier and more energized! Intra is a pleasant tasting, proprietary formulation of 23 time-tested and trusted botanical extracts that provide the body with antioxidants, flavonoids, lignins, polysaccharides and other health enhancing nutrients.",
-    usage: "Any time of the day with food or empty stomach – 1 to 2 fl. oz (28 to 56 ml) or 2 to 4 capsules daily",
+    usage: "Any time of the day with food or empty stomach – 1 to 2 fl. oz (28 to 56 ml) daily",
     stock: 25,
     featured: true,
+  },
+  {
+    id: "intra-capsules",
+    name: "Intra Capsules",
+    subtitle: "60 Capsules – Herbal Supplement",
+    price: 1200,
+    image: intraJuiceImg,
+    description:
+      "The same powerful formula of 23 botanical extracts now in convenient capsule form. Intra Capsules deliver the same antioxidants, flavonoids, lignins, polysaccharides and health-enhancing nutrients as the liquid tincture – perfect for on-the-go wellness. Suitable for all ages.",
+    usage: "Any time of the day with food or empty stomach – 2 to 4 capsules daily",
+    stock: 15,
   },
   {
     id: "nutriaplus",
