@@ -74,7 +74,7 @@ const ProductCard = ({ product }: { product: Product }) => {
   const whatsappUrl = `https://wa.me/639289258127?text=${encodeURIComponent(whatsappMsg)}`;
 
   return (
-    <div className={`bg-card rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col ${product.featured ? "ring-2 ring-gold" : ""}`}>
+    <div className={`bg-card rounded-xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col ${product.featured ? "ring-2 ring-gold" : ""}`}>
       {product.featured && (
         <div className="gold-gradient text-accent-foreground text-center text-xs font-body font-bold py-1.5 tracking-wider uppercase">
           ⭐ Best Seller
