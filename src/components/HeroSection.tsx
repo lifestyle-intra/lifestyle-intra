@@ -5,12 +5,19 @@ import intraBottle from "@/assets/intra-juice.jpg";
 
 const HeroSection = () => {
   const imgRef = useRef<HTMLImageElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
       if (imgRef.current) {
-        const scrollY = window.scrollY;
         imgRef.current.style.transform = `translateY(${scrollY * 0.4}px) scale(1.1)`;
+      }
+      if (contentRef.current) {
+        const opacity = Math.max(1 - scrollY / 600, 0);
+        const translateY = scrollY * 0.15;
+        contentRef.current.style.opacity = `${opacity}`;
+        contentRef.current.style.transform = `translateY(${translateY}px)`;
       }
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -27,7 +34,7 @@ const HeroSection = () => {
         <img ref={imgRef} src={heroBg} alt="Lifestyles Intra – Reclaim Your Health, Energy and Vitality" className="w-full h-full object-cover scale-110 will-change-transform" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
       </div>
-      <div className="relative z-10 container mx-auto px-4 md:px-8 py-20">
+      <div ref={contentRef} className="relative z-10 container mx-auto px-4 md:px-8 py-20 will-change-[opacity,transform]">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="flex items-center gap-2 mb-4 opacity-90">
