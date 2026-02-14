@@ -1,8 +1,22 @@
+import { useEffect, useRef } from "react";
 import { Leaf, ShieldCheck, Users, Star } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import intraBottle from "@/assets/intra-juice.jpg";
 
 const HeroSection = () => {
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (imgRef.current) {
+        const scrollY = window.scrollY;
+        imgRef.current.style.transform = `translateY(${scrollY * 0.4}px) scale(1.1)`;
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToProducts = () => {
     document.getElementById("products")?.scrollIntoView({ behavior: "smooth" });
   };
@@ -10,7 +24,7 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Lifestyles Intra – Reclaim Your Health, Energy and Vitality" className="w-full h-full object-cover" />
+        <img ref={imgRef} src={heroBg} alt="Lifestyles Intra – Reclaim Your Health, Energy and Vitality" className="w-full h-full object-cover scale-110 will-change-transform" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
       </div>
       <div className="relative z-10 container mx-auto px-4 md:px-8 py-20">
