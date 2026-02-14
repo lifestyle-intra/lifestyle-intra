@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MessageCircle, Minus, Plus } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 import intraJuiceImg from "@/assets/intra-juice.jpg";
 import nutriaplusImg from "@/assets/nutriaplus.jpg";
 import cardiolifeImg from "@/assets/cardiolife.png";
@@ -157,8 +158,10 @@ const ProductsSection = () => {
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {initialProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {initialProducts.map((product, index) => (
+            <ScrollReveal key={product.id} delay={index * 0.15}>
+              <ProductCard product={product} />
+            </ScrollReveal>
           ))}
         </div>
       </div>
