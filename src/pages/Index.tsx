@@ -7,6 +7,7 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import SiteFooter from "@/components/SiteFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import StickyCTA from "@/components/StickyCTA";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
@@ -31,6 +32,7 @@ const Index = () => {
       </ScrollReveal>
       <SiteFooter />
       <FloatingWhatsApp />
+      <StickyCTA />
     </div>
   );
 };
