@@ -1,11 +1,47 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { Leaf, ShieldCheck, Users, Star } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import intraBottle from "@/assets/intra-juice.jpg";
 
+const useCountUp = (end: number, duration = 2000) => {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  const start = useCallback(() => {
+    if (started) return;
+    setStarted(true);
+    const startTime = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * end));
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }, [end, duration, started]);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { start(); obs.disconnect(); } },
+      { threshold: 0.5 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [start]);
+
+  return { count, ref };
+};
+
 const HeroSection = () => {
   const imgRef = useRef<HTMLImageElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const yearCounter = useCountUp(32, 2000);
+  const countryCounter = useCountUp(30, 1800);
+  const servedCounter = useCountUp(10, 2200);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,9 +101,18 @@ const HeroSection = () => {
               </a>
             </div>
             <div className="flex items-center gap-6 mt-10 text-primary-foreground/70 text-sm font-body">
-              <div className="flex items-center gap-2"><ShieldCheck className="h-4 w-4" /> Since 1992</div>
-              <div className="flex items-center gap-2"><Users className="h-4 w-4" /> 30+ Countries</div>
-              <div className="flex items-center gap-2"><Star className="h-4 w-4" /> Millions Served</div>
+              <div ref={yearCounter.ref} className="flex items-center gap-2">
+                <ShieldCheck className="h-4 w-4" />
+                <span className="tabular-nums font-semibold">{yearCounter.count}+</span> Years
+              </div>
+              <div ref={countryCounter.ref} className="flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                <span className="tabular-nums font-semibold">{countryCounter.count}+</span> Countries
+              </div>
+              <div ref={servedCounter.ref} className="flex items-center gap-2">
+                <Star className="h-4 w-4" />
+                <span className="tabular-nums font-semibold">{servedCounter.count}M+</span> Served
+              </div>
             </div>
           </div>
           <div className="hidden lg:flex justify-center">
