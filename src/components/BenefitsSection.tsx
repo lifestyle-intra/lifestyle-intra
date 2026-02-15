@@ -13,8 +13,14 @@ const benefits = [
 
 const BenefitsSection = () => {
   return (
-    <section className="section-padding bg-secondary">
-      <div className="container mx-auto">
+    <section className="section-padding bg-secondary relative overflow-hidden">
+      {/* Subtle leaf pattern texture */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5c-5 8-15 12-15 20s10 15 15 25c5-10 15-17 15-25S35 13 30 5z' fill='%23166534' fill-opacity='1'/%3E%3C/svg%3E")`,
+        backgroundSize: '60px 60px',
+      }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary via-transparent to-secondary" />
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-12">
           <span className="text-gold font-body text-sm tracking-widest uppercase">Why Choose Intra</span>
           <h2 className="font-display text-3xl md:text-4xl text-foreground mt-2 mb-4">
