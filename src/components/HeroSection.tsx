@@ -100,7 +100,7 @@ const HeroSection = () => {
                 Contact Us
               </a>
             </div>
-            <div className="flex items-center gap-6 mt-10 text-primary-foreground/70 text-sm font-body">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 mt-10 text-primary-foreground/70 text-sm font-body">
               <div ref={yearCounter.ref} className="flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4" />
                 <span className="tabular-nums font-semibold">{yearCounter.count}+</span> Years
