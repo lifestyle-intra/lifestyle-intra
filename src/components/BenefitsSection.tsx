@@ -1,4 +1,5 @@
 import { ShieldCheck, Zap, Droplets, Sun, Heart, Brain, Leaf, Activity } from "lucide-react";
+import { motion } from "framer-motion";
 
 const benefits = [
   { icon: ShieldCheck, title: "Immune Support", desc: "Strengthens your body's natural defenses with powerful botanical antioxidants." },
@@ -32,8 +33,12 @@ const BenefitsSection = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {benefits.map((b, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               className="bg-card rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 group"
             >
               <div className="w-12 h-12 rounded-lg hero-gradient flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -41,7 +46,7 @@ const BenefitsSection = () => {
               </div>
               <h3 className="font-display text-lg text-foreground mb-2">{b.title}</h3>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">{b.desc}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
