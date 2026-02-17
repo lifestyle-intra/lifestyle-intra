@@ -5,6 +5,7 @@ import ProductsSection from "@/components/ProductsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
+import FAQSection from "@/components/FAQSection";
 import SiteFooter from "@/components/SiteFooter";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import StickyCTA from "@/components/StickyCTA";
@@ -26,6 +27,9 @@ const Index = () => {
       </ScrollReveal>
       <ScrollReveal>
         <AboutSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FAQSection />
       </ScrollReveal>
       <ScrollReveal>
         <ContactSection />
